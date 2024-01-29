@@ -32,7 +32,7 @@ estas 2 líneas hacen que nuestro secreto sea seguro
   const secret = crypto.randomBytes(64).toString('hex');
   const hashedSecret = bcrypt.hashSync(secret, 10);
 ```
-implementalas en `crypto/confing.js` y úsalas en secret de session y donde creas que sea necesario. 
+implementalas en `crypto/config.js` y úsalas en secret de session y donde creas que sea necesario. 
 
 4. Condicionantes
 En la entrada de nuestra aplicación aparecerán los inputs de `login` y `pass`. Si nos hemos logado ya y volvemos a esa entrada no deberán salir, y sí saldrá un enlace al `dashboard` y un botón de `logout`
