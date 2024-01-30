@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(
     session({
-      secret: `${hashedSecret}`,
+      secret: hashedSecret,
       resave: false,
       saveUninitialized: true,
       cookie: { secure: false },

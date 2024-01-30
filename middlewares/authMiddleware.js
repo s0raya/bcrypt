@@ -6,12 +6,12 @@ const generateToken = (user) => {
       {
         user: user.id,
       },
-      `${hashedSecret}`,
+      hashedSecret,
       { expiresIn: '1h' }
     );
 }
 
-function isAuthenticated (req, res, next) {
+const isAuthenticated = (req, res, next) => {
   if (req.session.token) next()
   else next('route')
 }
@@ -19,13 +19,12 @@ function isAuthenticated (req, res, next) {
 
 const verifyToken = (req, res, next) => {
     const token = req.session.token;
-    console.log(token);
   
     if (!token) {
       return res.status(401).json({ message: 'token no generado' });
     }
   
-    jwt.verify(token, `${hashedSecret}`, (err, decoded) => {
+    jwt.verify(token, hashedSecret, (err, decoded) => {
       if (err) {
         return res.status(401).json({ message: 'token invalido' });
       }

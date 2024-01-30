@@ -2,7 +2,6 @@ const middlewares = require('../middlewares/authMiddleware.js');
 const users = require('../data/users.js')
 
 const paths = (app) => {
-  
   app.get('/', middlewares.isAuthenticated, (req,res) => {
     res.send(`
       <a href="/dashboard">Dashboard</a>
@@ -15,13 +14,13 @@ const paths = (app) => {
   app.get('/', (req,res) => {
       const loginForm = `
       <form action="/login" method="post">
-      <label for="username">Usuario :</label>
-      <input type="text" id="username" name="username" required>
-      
-      <label for="password">Contraseña :</label>
-      <input type="password" id="password" name="password" required>
-      
-      <button type="submit">Iniciar sesión</button>
+        <label for="username">Usuario :</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Contraseña :</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Iniciar sesión</button>
       </form>
       `;
       res.send(loginForm);
@@ -66,3 +65,46 @@ const paths = (app) => {
   module.exports = {
     paths,
 }
+
+
+/*********************************CLASE ****************************
+const express = require('express');
+const router = express.Router();
+
+
+router.get('/', (req, res) => {
+  if(req.session.token) {
+    res.send(`
+      <a href="/dashboard">Dashboard</a>
+      <form action="/logout" method="post">
+        <button type="submit">Cerrar sesion</button>
+      </form>
+    `)
+  } else {
+    res.send(`      
+      <form action="/login" method="post">
+        <label for="username">Usuario :</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Contraseña :</label>
+        <input type="password" id="password" name="password" required>
+        
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    `);
+  }
+})
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
